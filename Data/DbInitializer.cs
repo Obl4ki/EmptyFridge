@@ -18,15 +18,15 @@ public static class DbInitializer
 
 
         var ingredients = new Ingredient[] {
-            new Ingredient {
-                Name = "",
-                FoodGroup = zboza,
+            new() {
+                Name = "Mąka",
+                FoodGroup = new() { Name = "Zboża" },
                 AmountMeasure = new() {
                     Amount = 10,
                     MeasureUnit = ile,
                 }
             },
-            new Ingredient {
+            new() {
                 Name = "Banany",
                 FoodGroup = owoce,
                 AmountMeasure = new() {
@@ -34,7 +34,7 @@ public static class DbInitializer
                     MeasureUnit = gramy,
                 }
             },
-            new Ingredient {
+            new() {
                 Name = "Czereśnie",
                 FoodGroup = owoce,
                 AmountMeasure = new() {
@@ -44,7 +44,7 @@ public static class DbInitializer
             },
 
         };
-
+        
         context.Ingredients.AddRange(ingredients);
         context.SaveChanges();
     }

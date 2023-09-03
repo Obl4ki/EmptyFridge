@@ -11,7 +11,7 @@ namespace EmptyFridge.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "FoodGroup",
+                name: "FoodGroups",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -20,20 +20,20 @@ namespace EmptyFridge.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FoodGroup", x => x.Id);
+                    table.PrimaryKey("PK_FoodGroups", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasureUnit",
+                name: "MeasureUnits",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Unit = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Unit = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasureUnit", x => x.Id);
+                    table.PrimaryKey("PK_MeasureUnits", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,9 +49,9 @@ namespace EmptyFridge.Migrations
                 {
                     table.PrimaryKey("PK_AmountMeasure", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AmountMeasure_MeasureUnit_MeasureUnitId",
+                        name: "FK_AmountMeasure_MeasureUnits_MeasureUnitId",
                         column: x => x.MeasureUnitId,
-                        principalTable: "MeasureUnit",
+                        principalTable: "MeasureUnits",
                         principalColumn: "Id");
                 });
 
@@ -74,9 +74,9 @@ namespace EmptyFridge.Migrations
                         principalTable: "AmountMeasure",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Ingredients_FoodGroup_FoodGroupId",
+                        name: "FK_Ingredients_FoodGroups_FoodGroupId",
                         column: x => x.FoodGroupId,
-                        principalTable: "FoodGroup",
+                        principalTable: "FoodGroups",
                         principalColumn: "Id");
                 });
 
@@ -106,10 +106,10 @@ namespace EmptyFridge.Migrations
                 name: "AmountMeasure");
 
             migrationBuilder.DropTable(
-                name: "FoodGroup");
+                name: "FoodGroups");
 
             migrationBuilder.DropTable(
-                name: "MeasureUnit");
+                name: "MeasureUnits");
         }
     }
 }

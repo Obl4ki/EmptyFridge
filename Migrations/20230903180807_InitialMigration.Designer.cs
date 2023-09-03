@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmptyFridge.Migrations
 {
     [DbContext(typeof(FoodContext))]
-    [Migration("20230901015803_InitialMigration")]
+    [Migration("20230903180807_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -50,7 +50,7 @@ namespace EmptyFridge.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FoodGroup");
+                    b.ToTable("FoodGroups");
                 });
 
             modelBuilder.Entity("EmptyFridge.Models.Ingredient", b =>
@@ -83,12 +83,12 @@ namespace EmptyFridge.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Unit")
+                    b.Property<string>("Unit")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MeasureUnit");
+                    b.ToTable("MeasureUnits");
                 });
 
             modelBuilder.Entity("EmptyFridge.Models.AmountMeasure", b =>

@@ -47,7 +47,7 @@ namespace EmptyFridge.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FoodGroup");
+                    b.ToTable("FoodGroups");
                 });
 
             modelBuilder.Entity("EmptyFridge.Models.Ingredient", b =>
@@ -80,12 +80,12 @@ namespace EmptyFridge.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Unit")
+                    b.Property<string>("Unit")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MeasureUnit");
+                    b.ToTable("MeasureUnits");
                 });
 
             modelBuilder.Entity("EmptyFridge.Models.AmountMeasure", b =>
